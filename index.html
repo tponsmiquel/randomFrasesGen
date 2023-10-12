@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Generador de frases</title>
+    </head>
+    <body>
+        <div id="datetime">
+            <p id="fecha"></p>
+            <p id="hora"></p>
+            <hr>
+        </div>
+        <h1>Generador de frases épicas</h1>
+        <div id="frasesDisplay">
+            <!--Las frases se van a mostrar aquí-->
+        </div>
+        <button onclick="newfrase()">Nueva frase</button>
+
+        <script src="script.js"></script>
+        <script>
+            function updateDataTime() {
+                const fechaElement = document.getElementById("fecha");
+                const horaElement = document.getElementById("hora");
+
+            const fechaActual = new Date();
+            const optionsFecha = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
+            const optionsHora = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+            const fechaTexto = fechaActual.toLocaleDateString('es-ES', optionsFecha);
+            const horaTexto = fechaActual.toLocaleTimeString('es-ES', optionsHora);
+
+                fechaElement.textContent = fechaTexto;
+                horaElement.textContent = horaTexto;
+            }
+
+            //Actualizar fecha y hora cada segundo
+            setInterval(updateDataTime, 1000);
+            updateDataTime(); // Actualizar inmediatamente al cargar la página
+        </script>
+    </body>
+</html>
